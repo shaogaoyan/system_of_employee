@@ -11,6 +11,8 @@
 #include <arpa/inet.h>
 #include <sys/socket.h>
 #include <sys/types.h>
+#include <unistd.h>
+
 
 #define WELCOME "---------欢迎进入员工信息系统---------"
 #define N 20    // 用来定义数组下标

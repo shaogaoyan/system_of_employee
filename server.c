@@ -52,12 +52,18 @@ int server_accept(int server_sockfd){
 	INFO info;
 	int client_sockfd;
 	int len_sockaddr = sizeof(client_addr);
+Loop:
 	if((client_sockfd = accept(server_sockfd,(struct sockaddr*)&client_addr,&len_sockaddr))==-1){
 		perror("accept");
 		exit(-1);
 	}
 	printf(">>>消息：TCP服务器接受来自[%s]的请求...\n",inet_ntoa(client_addr.sin_addr));
 	
+	int pid = fork();
+	if(pid < 0){
+		exit(-1);
+	}
+	else if(pid == 0){
 	memset(&info,0,sizeof(info));
 	if(recv(client_sockfd,(INFO*)&info,sizeof(info),0)==-1){
 		perror("recv");
@@ -65,6 +71,9 @@ int server_accept(int server_sockfd){
 	}
 	else
 		printf("测试成功！");
+	}
+	else
+		goto Loop;
 
 	return client_sockfd;
 
