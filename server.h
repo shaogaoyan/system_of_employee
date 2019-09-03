@@ -5,12 +5,19 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <errno.h>
 #include <string.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
 #include <sys/socket.h>
-
+#include <sys/types.h>
 
 #define WELCOME "---------欢迎进入员工信息系统---------"
 #define N 20    // 用来定义数组下标
+#define LNUM 20  // 同时监听个数 
+
+int server_net();      // 配置服务器的网络至开启监听
+int server_accept(int server_sockfd); //启动服务器开启并发模式
 
 
 typedef struct{
@@ -28,7 +35,4 @@ typedef struct{
 	double salary;     // 薪水
 }INFO;
 
-int server_net();      // 配置服务器的网络
-
-
-void sever_listen(int sfd); //启动服务器开启并发模式
+#endif
