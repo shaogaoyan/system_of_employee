@@ -1,7 +1,5 @@
-#ifndef  _SERVER_H_
-#define  _SERVER_H_
-
-
+#ifndef  CLIENT_H_
+#define  CLIENT_H_
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,16 +7,14 @@
 #include <string.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
-#include <sys/socket.h>
 #include <sys/types.h>
+#include <sys/socket.h>
 
-#define WELCOME "---------欢迎进入员工信息系统---------"
-#define N 20    // 用来定义数组下标
-#define LNUM 20  // 同时监听个数 
+#define N 20
+#define HOSTIP "192.168.1.140"
+#define HOSTPORT 52739
 
-int server_net();      // 配置服务器的网络至开启监听
-int server_accept(int server_sockfd); //启动服务器开启并发模式
-
+int client_net();     //初始化客户端的网络配置
 
 typedef struct{
 	int  type;        // 权限标志位
@@ -27,7 +23,7 @@ typedef struct{
 }USER;
 
 typedef struct{
-	char name[N]; 
+	char name[N];
 	char addr[N];      // 存放客户IP
 	int  age;          // 年龄
 	int  no;           // 员工编号
@@ -35,4 +31,5 @@ typedef struct{
 	double salary;     // 薪水
 }INFO;
 
+void interface_show(USER* user);
 #endif

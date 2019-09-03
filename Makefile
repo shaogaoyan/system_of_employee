@@ -1,10 +1,10 @@
 
-OBJ = server.o server_main.o
+OBJ = client.o client_main.o
 
-server : $(OBJ)
-	cc -o server $(OBJ)
+client : $(OBJ)
+	cc -o client $(OBJ)
 
-server.o : server.h server.c
+client.o : client.h client.c
 
 .PHONY : clean
 clean :
