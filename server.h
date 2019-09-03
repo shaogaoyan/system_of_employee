@@ -30,7 +30,7 @@ typedef struct{
 
 typedef struct{
 	char name[N]; 
-	char addr[N];      // 存放客户IP
+	char addr[N];      // 地址
 	int  age;          // 年龄
 	int  no;           // 员工编号
 	char c_phone[12];  // 手机号
